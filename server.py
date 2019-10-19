@@ -20,5 +20,3 @@ def allowed_file(filename):
 def uploadImg():
     logger.log(request.files)
     return 'test'
-
-
