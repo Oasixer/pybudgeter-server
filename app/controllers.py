@@ -14,6 +14,6 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @things.route('/uploadImg', methods=["POST"])
-def uploadImg():
+def uploadImg(**kwargs):
     logger.log(request.files)
     return 'test'
