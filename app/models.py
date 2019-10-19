@@ -1,14 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import os
-from dotenv import load_dotenv
-load_dotenv()
-
-USER = os.getenv('USER')
-PW = os.getenv('PASSWORD')
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{USER}:{PW}@localhost/pybudgeter.db')
 db = SQLAlchemy(app)
 
 
