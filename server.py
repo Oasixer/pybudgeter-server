@@ -1,5 +1,8 @@
 import opencv_test_funcs
 from flask import Flask
+import sqlite3
+
+conn = sqlite3.connect('database.db')
 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
