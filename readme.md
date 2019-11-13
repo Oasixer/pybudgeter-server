@@ -9,11 +9,5 @@ https://stackoverflow.com/questions/6590688/is-it-bad-to-have-my-virtualenv-dire
 -> token gets sent to server as confirmation
 
 # Upload an image (http request)
--> Image gets uploaded temporarily to userfolder/pybudgeter/images
--> Image gets parsed asynchronously
--> Image text gets uploaded temporarily to userfolder/pybudgeter/text
--> Image text gets parsed asynchronously for key info
--> key info gets logged somewhere
--> row gets added to user table
 
 
