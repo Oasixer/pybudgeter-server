@@ -46,9 +46,22 @@ class Transaction(db.Model):
 
 class Recurring(db.Model):
     rid = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    fid = db.Column(db.I)
+    uid = db.Column(db.Integer, foreign_key=db.ForeignKey('users.uid'))
     timedelta = db.Column(db.DateTime)
     n_times = db.Column(db.Integer)
 
+    def __init__(self, rid, fid, timedelta, n_times):
+        self.rid = rid
+        self.fid = fid
+        self.timedelta = timedelta
+        self.n_times = n_times
 
+class Categories(db.Model):
+    cid = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    uid = db.Column(db.Integer, foreign_key=db.ForeignKey('users.uid'))
+    name = db.Column(db.String(800), nullable=False)
 
+    def __init__(self, cid, uid, name):
+        self.cid = cid
+        self.uid = uid
+        self.name = name

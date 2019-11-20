@@ -1,4 +1,3 @@
-import opencv_test_funcs
 from flask import Blueprint
 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
