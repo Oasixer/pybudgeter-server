@@ -1,10 +1,10 @@
 from datetime import datetime
-from hashlib import md5
+#  from hashlib import md5
 from time import time
 from flask import current_app
-from flask_login import UserMixin
-from werkzeug.security import generate_password_hash, check_password_hash
-import jwt
+#  from flask_login import UserMixin
+#  from werkzeug.security import generate_password_hash, check_password_hash
+#  import jwt
 from app import db#, login
 
 class User(db.Model):
@@ -29,13 +29,13 @@ class User(db.Model):
 class Transaction(db.Model):
     __tablename__ = 'transactions'
     id = db.Column(db.Integer, primary_key=True)
-    uid = db.Column(db.Integer, foreign_key=db.ForeignKey('users.uid'), nullable=False)
+    uid = db.Column(db.Integer, db.ForeignKey('users.uid'), nullable=False)
     timestamp = db.Column(db.DateTime, nullable=False)
     delta = db.Column(db.Float, nullable=False) # delta money can be positive or negative
     vendor = db.Column(db.String(800), nullable=False)
     name = db.Column(db.String(800), nullable=False)
     category = db.Column(db.String(800))
-    recurring = db.Relationship('Recurring',backref='init')
+    recurring = db.relationship('Recurring',backref='init')
 
     def __init__(self, uid, timestamp, delta, vendor, name, category):
         self.uid=uid
@@ -56,7 +56,7 @@ class Recurring(db.Model):
         self.timedelta = timedelta
         self.n_times = n_times
 
-class Categories(db.Model):
+class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     uid = db.Column(db.Integer, db.ForeignKey('users.id'))
     name = db.Column(db.String(800), nullable=False)
