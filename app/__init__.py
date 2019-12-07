@@ -12,4 +12,4 @@ from app.controllers import things
 
 app.register_blueprint(things, url_prefix='/things')
 
-db.create_all()
+#db.create_all()
