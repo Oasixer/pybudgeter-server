@@ -1,17 +1,14 @@
 import os
 from dotenv import load_dotenv
-load_dotenv()
 
-USER = os.getenv('USER')
-PW = os.getenv('PASSWORD')
+basedir = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(os.path.join(basedir, '.env'))
 
-DEBUG = True
-
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-
-SQLALCHEMY_DATABASE_URI = f'postgresql+psycopg2://{USER}:{PW}@/localhost/pybudgeter.db'
-
-SQLALCHEMY_TRACK_MODIFICATIONS = False
-
-THREADS_PER_PAGE = 2
+class Config(object):
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+        f'postgresql+psycopg2://{USER}:{PW}@/localhost/pybudgeter.db'
+    USER = os.getenv('USER')
+    PW = os.getenv('PASSWORD')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
